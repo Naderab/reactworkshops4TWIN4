@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import products from "../products.json";
-import Product from "./Product";
+import { useApi } from './../hooks/useApi';
 export default function ProductDetails(props) {
   const id = props.match.params.id; /*We used props.match.params.name; 
  This is given by the react-router-dom and will help us get relevant information about our navigation 
@@ -95,7 +94,7 @@ const Footer = styled.footer`
   grid-area: footer;
   padding: 0.25rem;
   text-align: right !important;
-`;import { useApi } from './../hooks/useApi';
+`;
 
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
