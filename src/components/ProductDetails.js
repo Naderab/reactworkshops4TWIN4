@@ -1,41 +1,45 @@
 import React from "react";
 import styled from "styled-components";
-import { useApi } from './../hooks/useApi';
+import { useApi } from "./../hooks/useApi";
 export default function ProductDetails(props) {
   const id = props.match.params.id; /*We used props.match.params.name; 
  This is given by the react-router-dom and will help us get relevant information about our navigation 
  behavior. The router will automatically match the passes prop to the name we assigned in the Route. */
-  const [toRender,err,] = useApi('product/'+id);
+  const [toRender, err] = useApi("product/" + id);
   return (
     <>
       {/* We also have a “history” prop that contains the history of our page navigation */}
-     
+
       <Container>
         {toRender ? (
           <>
-
-          <ContentBox>
-        <Content1><img src={`${process.env.REACT_APP_URL_UPLOADS + "/" + toRender.image}`} width="600" height="600" alt={toRender.title}/></Content1>
-        <Content2>
-        <H1>{toRender.title}</H1>
-        <H3>Description 
-        :</H3>
-        <Span>{toRender.description}</Span>
-        <H3>Price 
-        :</H3>
-        <Span> {toRender.price} DT </Span>
-        <H3>Likes 
-        :</H3>
-        <Span>{toRender.likes}</Span>
-        </Content2>
-        </ContentBox>
-        <Footer>
-        <Button onClick={() => props.history.replace("/products")}>
-        Return to products
-      </Button>
-        </Footer>
+            <ContentBox>
+              <Content1>
+                <img
+                  src={`${
+                    process.env.REACT_APP_URL_UPLOADS + "/" + toRender.image
+                  }`}
+                  width="600"
+                  height="600"
+                  alt={toRender.title}
+                />
+              </Content1>
+              <Content2>
+                <H1>{toRender.title}</H1>
+                <H3>Description :</H3>
+                <Span>{toRender.description}</Span>
+                <H3>Price :</H3>
+                <Span> {toRender.price} DT </Span>
+                <H3>Likes :</H3>
+                <Span>{toRender.likes}</Span>
+              </Content2>
+            </ContentBox>
+            <Footer>
+              <Button onClick={() => props.history.replace("/products")}>
+                Return to products
+              </Button>
+            </Footer>
           </>
-          
         ) : (
           <p>Product not found</p>
         )}
@@ -84,11 +88,11 @@ const Content1 = styled.div`
   height: 100%;
 `;
 const Content2 = styled.div`
-background: transparent !important;
-padding: 0.25rem;
-width: 60%;
-height: 100%;
-`;;
+  background: transparent !important;
+  padding: 0.25rem;
+  width: 60%;
+  height: 100%;
+`;
 const Footer = styled.footer`
   background: transparent;
   grid-area: footer;
@@ -98,8 +102,8 @@ const Footer = styled.footer`
 
 const Button = styled.button`
   /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "palevioletred" : "white"};
-  color: ${props => props.primary ? "white" : "palevioletred"};
+  background: ${(props) => (props.primary ? "palevioletred" : "white")};
+  color: ${(props) => (props.primary ? "white" : "palevioletred")};
   font-size: 1.5em;
   margin: 1em;
   padding: 0.25em 1em;

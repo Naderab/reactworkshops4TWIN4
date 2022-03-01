@@ -51,7 +51,7 @@ export async function queryApi(
           // If not keep the content type json and the body will be parsed automatically to json
           config = {
             ...config,
-            headers: { "Content-Type": "application/json", },
+            headers: { "Content-Type": "application/json" },
             data: body,
           };
         }
